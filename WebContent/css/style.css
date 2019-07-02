@@ -1,0 +1,179 @@
+.redBorderBtn>.sapMBtnInner {
+    border: 2px solid #f7fc1f!important;
+    background: #fff;
+}
+
+.redBorderBtn .sapMBtnContent {
+    line-height: 2.3rem!important;
+    color: #000;
+    margin-left: .8rem;
+    margin-right: .6rem
+}
+
+.redBorderBtn .sapMBtnIcon {
+    color: #000
+}
+
+.sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected:hover>.sapMITBText,
+.sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected>.sapMITBText,
+.sapMITBTextOnly .sapMITBFilterDefault:hover>.sapMITBText,
+.sapMSFR:after,
+.sapMSFS:after {
+    color: #000
+}
+
+.sapMITBTextOnly .sapMITBText {
+    font-size: 1rem
+}
+
+.sapMITBSelected>.sapMITBContentArrow {
+    border-bottom: 4px solid;
+    border-bottom-color: #f7fc1f
+}
+
+.sapMITBTextOnly .sapMITBFilterDefault>.sapMITBText {
+    color: #666
+}
+
+.customHeaderLabel,
+.customHeaderValue {
+    font-family: arsMaquetteProregular, Helvetica, Arial, sans-serif!important
+}
+
+.H1Title {
+    font-size: 2rem!important
+}
+
+.H2Title {
+    font-size: 1.5rem!important
+}
+
+.H3Title {
+    font-size: 1.2rem!important
+}
+
+.H4Title {
+    font-size: 1rem!important
+}
+
+.borderHBox {
+    border: 1px solid #ccc
+}
+
+.customHeaderLabel {
+    font-size: .95rem!important;
+    color: #000!important;
+    line-height: 1.57!important;
+    font-weight: 700
+}
+
+.order-history-area .sapMITH {
+    text-align: center;
+    box-shadow: none;
+    background-color: transparent;
+    border-bottom: 1px solid #ccc;
+}
+
+.order-history-area .sapMITBContent,
+.order-history-area .sapMTBStandard {
+    border-bottom: 0
+}
+
+.order-history-area .sapMITBTextOnly .sapMITBText {
+    font-size: 1.1rem
+}
+
+.bgWhite {
+    background-color: #FFF! important;
+    border: none;
+}
+
+.boldFont {
+    font-weight: 700!important
+}
+
+.customHeaderValue {
+    font-size: .95rem!important;
+    color: #555!important;
+    line-height: 1.57!important
+}
+
+.dialogButtons .sapMTB {
+    background-color: #FFF! important;
+}
+
+.dialogButtons .sapMBtn .sapMBtnContent {
+    line-height: 2.3rem!important;
+    color: #000;
+    margin-left: .8rem;
+    margin-right: .6rem
+}
+
+.dialogButtons .sapMBtn>.sapMBtnInner {
+    border: 2px solid #d4281c !important;
+    background: #fff;
+}
+
+.dialogButtons .sapMBtn .sapMBtnIcon {
+    color: #000
+}
+
+.cart-table-cntr .product-details-clm {
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: px
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: bolder;
+    color: #000;
+    line-height: 1.3;
+    letter-spacing: .03px!important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: auto
+}
+
+.sapMListTblCell {
+    padding: .5rem!important;
+    vertical-align: middle;
+    font-size: .875rem
+}
+
+.sapMListTbl .sapMLabel {
+    font-weight: inherit;
+    font-size: .9rem
+}
+
+.sapMLabel,
+.sapMText {
+    font-size: .9rem
+}
+
+.sapMListTbl .sapMText {
+    font-weight: inherit;
+    font-size: .925rem
+}
+
+.sapMListTblHeaderCell>span {
+    color: #000!important
+}
+
+.sapMBtnInner,
+.sapMITBTextOnly .sapMITBFilter:not(.sapMITBDisabled) .sapMITBText,
+.sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected:hover>.sapMITBText,
+.sapMITBTextOnly .sapMITBFilterDefault.sapMITBSelected>.sapMITBText,
+.sapMITBTextOnly .sapMITBFilterDefault:hover>.sapMITBText,
+.sapMInputBaseInner,
+.sapMLabel,
+.sapMMessageToast,
+.sapMSFI,
+.sapMText,
+.sapMTitle,
+body {
+    font-family: arsMaquetteProregular, Helvetica, Arial, sans-serif!important;
+    -webkit-font-smoothing: auto;
+    letter-spacing: .06em;
+    color: #4c4c4c
+}

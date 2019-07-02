@@ -1,0 +1,131 @@
+{
+	"oDTable": {
+		"cols": [{
+			"key": "col1",
+			"label": "odTabColItem"
+		}, {
+			"key": "col2",
+			"label": "odTabColPrdtInfo"
+		}, {
+			"key": "col3",
+			"label": "odTabColOrgnlQty"
+		}, {
+			"key": "col4",
+			"label": "odTabColCrntDelQty"
+		}, {
+			"key": "col5",
+			"label": "odTabColUOM"
+		}, {
+			"key": "col6",
+			"label": "odTabColTDMCode"
+		}, {
+			"key": "col7",
+			"label": "odTabColSplOrdr"
+		}, {
+			"key": "col8",
+			"label": "odTabColSDI"
+		}, {
+			"key": "col9",
+			"label": "odTabColSLoc"
+		}, {
+			"key": "col10",
+			"label": ""
+		}],
+		"data": [{
+			"col1": "10",
+			"col2": {
+				"imgSrc": "https://productimages.mybobs.com/20051552/20051552_hero_wide.png",
+				"title": "Bob-O-Pedic Affinity Twin Matress",
+				"desc": "SKU"
+			},
+			"col3": "2",
+			"col4": "1",
+			"col5": "EA",
+			"col6": "CXL",
+			"col7": "",
+			"col8": "Normal",
+			"col9": "001",
+			"damageNLocation": {
+				"damage": "damage",
+				"location": "location"
+			}
+		}, {
+			"col1": "10",
+			"col2": {
+				"imgSrc": "https://productimages.mybobs.com/20051552/20051552_hero_wide.png",
+				"title": "Bob-O-Pedic Affinity Twin Matress",
+				"desc": "SKU"
+			},
+			"col3": "2",
+			"col4": "1",
+			"col5": "EA",
+			"col6": "CXL",
+			"col7": "",
+			"col8": "Normal",
+			"col9": "001",
+			"damageNLocation": {
+				"damage": "damage",
+				"location": "location"
+			}
+		}]
+	},
+	"damageNLocation": {
+		"damage": "damage",
+		"location": "location"
+	},
+	"documentMode": "display",
+	"deliveryHeader": {
+		"name": "VICKI",
+		"delivery": "023445",
+		"partnerId": "6767734",
+		"address": "93945/ ANUS AVENUS, WHITEFIELD, BANGALORE- 533023",
+		"status": "progress",
+		"day": "Monday",
+		"date": "22/05/2019",
+		"time": "03:23:00",
+		"zone": "CST",
+		"site": "1345",
+		"actualGIDate": "24/05/2019",
+		"route": "ABC_001",
+		"shippingPoint": "4343",
+		"stop": "SDS",
+		"salesOrder": "232424",
+		"transportation": "32424"
+	},
+	"userDetails": {
+		"user": "NARENDRA VALIVETI"
+	},
+	"partners": {
+		"name": "VICKI",
+		"streetAddress": "9839 Whitaker",
+		"apt": "XYZ",
+		"mobile": "9999999999",
+		"phone": "8888888888",
+		"email": "abc@outlook.com"
+	},
+	"headerTexts": {
+		"salesComment": "This is sales comment section",
+		"deliveryComment": "This is delivery comment section",
+		"dcComments": "This is DC comment section",
+		"specialInspection": "This is Special Inspection section",
+		"callAhead": "This is call ahead section"
+	},
+	"itemTexts": {
+		"mtrlSalesText": "This is Material Sales Text section",
+		"itemNote": "This is Item Note section",
+		"itemNumber": "10"
+	},
+	"searchBar": [{
+		"name": "abchi"
+	}, {
+		"name": "hrtef"
+	}, {
+		"name": "gwaed"
+	}, {
+		"name": "psdye"
+	}, {
+		"name": "asdec"
+	}, {
+		"name": "hyece"
+	}]
+}

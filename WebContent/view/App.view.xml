@@ -1,0 +1,317 @@
+<mvc:View controllerName="delivery.controller.App" displayBlock="true" xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<App id="app">
+		<pages>
+			<Page class="sapUiContentPadding bgWhite">
+				<customHeader>
+					<Toolbar class="bgWhite sapUiTinyMarginTop">
+						<Image src=" images/delivery.png" width="12rem" class="sapUiTinyMarginBegin"/>
+						<ToolbarSpacer/>
+						<Label text=" {i18n>user}" class="customHeaderLabel"/>
+						<Text text="{DeliveryModel>/userDetails/user}"/>
+						<ToolbarSpacer/>
+						<Label text="Delivery:" class="customHeaderLabel"/>
+						<SearchField width="10rem" class="sapUiSmallMarginEnd" enableSuggestions="true" search="fnSearchBarSearch" suggest="fnSearchBarSuggest"
+							suggestionItems="{ path: 'DeliveryModel>/searchBar', sorter: { path: 'name' } }">
+							<suggestionItems>
+								<SuggestionItem text="{DeliveryModel>name}" key="{DeliveryModel>name}"/>
+							</suggestionItems>
+						</SearchField>
+					</Toolbar>
+				</customHeader>
+				<subHeader>
+					<Toolbar class="bgWhite">
+						<Button icon="sap-icon://decline" text="{i18n>cancelDelivery}" class="sapUiSmallMarginBegin redBorderBtn"
+							visible="{= ${DeliveryModel>/documentMode} === 'display' &amp;&amp; ${DeliveryModel>/deliveryHeader/status} === 'progress' }"/>
+						<Button icon="sap-icon://post" text="{i18n>postGoodIssue}" class="sapUiSmallMarginBegin redBorderBtn"
+							visible="{= ${DeliveryModel>/documentMode} === 'change'}"/>
+						<ToolbarSpacer/>
+						<Text text="{i18n>orderNdeliveries}" class="section-title"/>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://edit" text="{i18n>edit}" press="fnEditHandler" class="sapUiSmallMarginEnd redBorderBtn"
+							visible="{ path: 'DeliveryModel>/documentMode', formatter: '.formatter.fnDisplay'}"/>
+						<Button icon="sap-icon://display" text="{i18n>display}" press="fnDisplayHandler" class="sapUiSmallMarginEnd redBorderBtn"
+							visible="{ path: 'DeliveryModel>/documentMode', formatter: '.formatter.fnChange'}"/>
+					</Toolbar>
+				</subHeader>
+				<content>
+					<HBox width="100%">
+						<VBox width="60%" class="borderHBox">
+							<!--<f:Form editable="true">-->
+							<!--	<f:layout>-->
+							<!--		<f:ResponsiveGridLayout columnsL="2" columnsM="2"/>-->
+							<!--	</f:layout>-->
+							<!--	<f:formContainers>-->
+							<!--		<f:FormContainer>-->
+							<!--			<f:formElements>-->
+							<!--				<f:FormElement>-->
+							<!--					<f:label>-->
+							<!--						<Label text="{i18n>name}" class="customHeaderLabel"/>-->
+							<!--					</f:label>-->
+							<!--					<f:fields>-->
+							<!--						<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/name}"/>-->
+							<!--					</f:fields>-->
+							<!--				</f:FormElement>-->
+							<!--				<f:FormElement>-->
+							<!--					<f:label>-->
+							<!--						<Label text="{i18n>partnerId}" class="customHeaderLabel"/>-->
+							<!--					</f:label>-->
+							<!--					<f:fields>-->
+							<!--						<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/partnerId}"/>-->
+							<!--					</f:fields>-->
+							<!--				</f:FormElement>-->
+							<!--				<f:FormElement>-->
+							<!--					<f:label>-->
+							<!--						<Label text="{i18n>status}" class="customHeaderLabel"/>-->
+							<!--					</f:label>-->
+							<!--					<f:fields>-->
+							<!--						<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/status}"/>-->
+							<!--					</f:fields>-->
+							<!--				</f:FormElement>-->
+							<!--			</f:formElements>-->
+							<!--		</f:FormContainer>-->
+							<!--		<f:FormContainer>-->
+							<!--			<f:formElements>-->
+							<!--				<f:FormElement>-->
+							<!--					<f:label>-->
+							<!--						<Label text="{i18n>delivery}" class="customHeaderLabel"/>-->
+							<!--					</f:label>-->
+							<!--					<f:fields>-->
+							<!--						<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/delivery}"/>-->
+							<!--					</f:fields>-->
+							<!--				</f:FormElement>-->
+							<!--				<f:FormElement>-->
+							<!--					<f:label>-->
+							<!--						<Label text="{i18n>delDateTime}" class="customHeaderLabel"/>-->
+							<!--					</f:label>-->
+							<!--					<f:fields>-->
+							<!--						<HBox>-->
+							<!--							<Text class="customHeaderValue"-->
+							<!--								visible="{ parts: ['DeliveryModel>/documentMode','DeliveryModel>/deliveryHeader/status'], formatter: '.formatter.fnDisOrEditComp'}"-->
+							<!--								text="{ parts: [ 'DeliveryModel>/deliveryHeader/day', 'DeliveryModel>/deliveryHeader/date', 'DeliveryModel>/deliveryHeader/time', 'DeliveryModel>/deliveryHeader/zone' ], formatter: '.formatter.fnDateNTime'}"/>-->
+							<!--							<DatePicker value="{DeliveryModel>/deliveryHeader/date}" width="75%" displayFormat="short" change="fnDateSelect($controller,$event)"-->
+							<!--								visible="{ parts: ['DeliveryModel>/documentMode','DeliveryModel>/deliveryHeader/status'], formatter: '.formatter.fnEditProg'}"/>-->
+							<!--							<TimePicker value="{DeliveryModel>/deliveryHeader/time}" width="75%" change="fnDateSelect($controller,$event)"-->
+							<!--								visible="{ parts: ['DeliveryModel>/documentMode','DeliveryModel>/deliveryHeader/status'], formatter: '.formatter.fnEditProg'}"/>-->
+							<!--						</HBox>-->
+							<!--					</f:fields>-->
+							<!--				</f:FormElement>-->
+							<!--				<f:FormElement>-->
+							<!--					<f:label>-->
+							<!--						<Label text="{i18n>address}" class="customHeaderLabel"/>-->
+							<!--					</f:label>-->
+							<!--					<f:fields>-->
+							<!--						<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/address}"/>-->
+							<!--					</f:fields>-->
+							<!--				</f:FormElement>-->
+							<!--			</f:formElements>-->
+							<!--		</f:FormContainer>-->
+							<!--	</f:formContainers>-->
+							<!--</f:Form>-->
+							<FlexBox class="sapUiTinyMarginTop" direction="{= ${Device>/system/desktop} === true ? 'Row' : 'Column' }">
+								<VBox class="sapUiTinyMarginBegin">
+									<HBox>
+										<Label text="{i18n>name}" class="customHeaderLabel"/>
+										<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/name}"/>
+									</HBox>
+									<HBox>
+										<Label text="{i18n>partnerId}" class="customHeaderLabel"/>
+										<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/partnerId}"/>
+									</HBox>
+								</VBox>
+								<VBox class="sapUiTinyMarginBegin">
+									<HBox>
+										<Label text="{i18n>delivery}" class="customHeaderLabel"/>
+										<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/delivery}"/>
+									</HBox>
+									<HBox>
+										<Label text="{i18n>delDateTime}" class="customHeaderLabel"/>
+										<Text class="customHeaderValue"
+											  visible="{ parts: ['DeliveryModel>/documentMode','DeliveryModel>/deliveryHeader/status'], formatter: '.formatter.fnDisOrEditComp'}"
+											  text="{ parts: [ 'DeliveryModel>/deliveryHeader/day', 'DeliveryModel>/deliveryHeader/date', 'DeliveryModel>/deliveryHeader/time', 'DeliveryModel>/deliveryHeader/zone' ], formatter: '.formatter.fnDateNTime'}"/>
+										<VBox visible="{ parts: ['DeliveryModel>/documentMode','DeliveryModel>/deliveryHeader/status'], formatter: '.formatter.fnEditProg'}">
+											<DateTimePicker width="75%" valueFormat="MM/dd/yyyy,hh:mm:ss,z" displayFormat="MM/dd/yyyy,hh:mm:ss"
+															change="fnDateSelect($controller,$event)"/>
+											<!--<TimePicker value="{DeliveryModel>/deliveryHeader/time}" width="75%" displayFormat="short" change="fnDateSelect($controller,$event)"/>-->
+										</VBox>
+									</HBox>
+								</VBox>
+								<VBox class="sapUiTinyMarginBegin">
+									<HBox>
+										<Label text="{i18n>status}" class="customHeaderLabel"/>
+										<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/status}"/>
+									</HBox>
+								</VBox>
+							</FlexBox>
+							<HBox class="sapUiTinyMarginBegin">
+								<Label text="{i18n>address}" class="customHeaderLabel"/>
+								<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/address}"/>
+							</HBox>
+						</VBox>
+						<VBox width="40%" class="borderHBox sapUiTinyMarginBegin">
+							<FlexBox direction="{= ${Device>/system/desktop} === true ? 'Row' : 'Column' }" class=" sapUiTinyMarginTop">
+								<VBox class="sapUiTinyMarginBegin">
+									<HBox>
+										<Label text="{i18n>site}" class="customHeaderLabel"/>
+										<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/site}"/>
+									</HBox>
+									<HBox>
+										<Label text="{i18n>route}" class="customHeaderLabel"/>
+										<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/route}"
+											  visible="{ parts: ['DeliveryModel>/documentMode','DeliveryModel>/deliveryHeader/status'], formatter: '.formatter.fnDisOrEditComp'}"/>
+										<Input id="routeInput" value="{DeliveryModel>/deliveryHeader/route}" width="75%" showSuggestion="true" showValueHelp="true"
+											   suggestionItems="{DeliveryModel>/route}" class="sapUiNoMarginTop" valueHelpRequest="fnHandleValueHelpRoute"
+											   visible="{ parts: ['DeliveryModel>/documentMode','DeliveryModel>/deliveryHeader/status'], formatter: '.formatter.fnEditProg'}">
+											<suggestionItems>
+												<core:Item text="{DeliveryModel>name}"/>
+											</suggestionItems>
+										</Input>
+									</HBox>
+									<HBox>
+										<Label text="{i18n>stop}" class="customHeaderLabel"/>
+										<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/stop}"
+											  visible="{ parts: ['DeliveryModel>/documentMode','DeliveryModel>/deliveryHeader/status'], formatter: '.formatter.fnDisOrEditComp'}"/>
+										<Input value="{DeliveryModel>/deliveryHeader/stop}" class="sapUiNoMarginTop" width="75%"
+											   visible="{ parts: ['DeliveryModel>/documentMode','DeliveryModel>/deliveryHeader/status'], formatter: '.formatter.fnEditProg'}"/>
+									</HBox>
+								</VBox>
+								<VBox class="sapUiTinyMarginBegin">
+									<HBox>
+										<Label text="{i18n>salesOrder}" class="customHeaderLabel"/>
+										<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/salesOrder}"/>
+									</HBox>
+									<HBox>
+										<Label text="{i18n>giDate}" class="customHeaderLabel"/>
+										<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/actualGIDate}"/>
+									</HBox>
+									<HBox>
+										<Label text="{i18n>shippingPoint}" class="customHeaderLabel"/>
+										<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/shippingPoint}"/>
+									</HBox>
+								</VBox>
+							</FlexBox>
+							<HBox class="sapUiTinyMarginBegin">
+								<Label text="{i18n>transportation}" class="customHeaderLabel"/>
+								<Text class="customHeaderValue" text="{DeliveryModel>/deliveryHeader/transportation}"/>
+							</HBox>
+						</VBox>
+					</HBox>
+					<IconTabBar expandable="false" class="order-history-area" select="fnMainITBarSelect">
+						<items>
+							<IconTabFilter text="{i18n>odItemDetails}">
+								<Table mode="MultiSelect" columns="{ path: 'DeliveryModel>/oDTable/cols', factory: '.fnODTabCols'}"
+									items="{ path: 'DeliveryModel>/oDTable/data', factory: '.fnODTabItems' }" class="cart-table-cntr"></Table>
+							</IconTabFilter>
+							<IconTabFilter text="{i18n>odPartners}">
+								<HBox width="100%" class="sapUiSmallMargin" justifyContent="Center">
+									<items>
+										<HBox class="borderHBox">
+											<VBox>
+												<Label design="Bold" text="{i18n>updateShippingTo}" class="H3Title sapUiTinyMarginBegin sapUiTinyMarginTop"/>
+												<Label text="Customer Number: 656565576" class="customHeaderLabel sapUiTinyMarginBegin sapUiTinyMarginTop"/>
+												<HBox width="100%" class="sapUiTinyMarginTop" justifyContent="Center">
+													<VBox class="sapUiTinyMarginBegin sapUiSmallMarginBottom">
+														<VBox>
+															<Label text="{i18n>partnerTabName}" class="customHeaderLabel"/>
+															<Input value="{DeliveryModel>/partners/name}" editable="false"/>
+														</VBox>
+														<VBox>
+															<Label text="{i18n>streetAddress}" class="customHeaderLabel"/>
+															<Input value="{DeliveryModel>/partners/streetAddress}"
+																editable="{ parts: ['DeliveryModel>/documentMode' ,'DeliveryModel>/deliveryHeader/status' ], formatter: '.formatter.fnEditProg' }"/>
+														</VBox>
+														<VBox>
+															<Label text="{i18n>aptSuiteBidg}" class="customHeaderLabel"/>
+															<Input value="{DeliveryModel>/partners/apt}" editable="false"/>
+														</VBox>
+													</VBox>
+													<VBox class="sapUiTinyMarginBeginEnd sapUiSmallMarginBottom">
+														<VBox>
+															<Label text="{i18n>mobile}" class="customHeaderLabel"/>
+															<Input value="{DeliveryModel>/partners/mobile}" editable="false"/>
+														</VBox>
+														<VBox>
+															<Label text="{i18n>phone}" class="customHeaderLabel"/>
+															<Input value="{DeliveryModel>/partners/phone}" editable="false"/>
+														</VBox>
+														<VBox>
+															<Label text="{i18n>email}" class="customHeaderLabel"/>
+															<Input value="{DeliveryModel>/partners/email}" editable="false"/>
+														</VBox>
+													</VBox>
+												</HBox>												
+											</VBox>
+										</HBox>
+									</items>
+								</HBox>
+							</IconTabFilter>
+							<IconTabFilter text="{i18n>odHdrTxts}" key="headerTexts">
+								<IconTabBar id="headerTextsContent" expandable="false" class="order-history-area" select="fnHdrTxtsSelect">
+									<content>
+										<HBox>
+											<TextArea id="hdrTxtsDis" value="{DeliveryModel>/headerTexts/salesComment}" width="98%" rows="10"
+													  editable="{ parts: ['DeliveryModel>/documentMode' ,'DeliveryModel>/deliveryHeader/status' ], formatter: '.formatter.fnEditProg' }">
+												<layoutData>
+													<FlexItemData growFactor="1"/>
+												</layoutData>
+											</TextArea>
+											<TextArea id="hdrTxtsEdit" width="98%" rows="10" class="sapUiSmallMarginBegin">
+												<layoutData>
+													<FlexItemData growFactor="1"/>
+												</layoutData>
+											</TextArea>
+										</HBox>
+										<Toolbar class="sapUiSmallMarginEnd">
+											<ToolbarSpacer/>
+											<Button text="{i18n>cancel}" class="redBorderBtn" press="fnHdrTxtsCancel"/>
+											<Button text="{i18n>clear}" class="redBorderBtn" press="fnHdrTxtsClear"/>
+											<Button text="{i18n>save}" class="redBorderBtn" press="fnHdrTxtsSave"/>
+										</Toolbar>
+									</content>
+									<items>
+										<IconTabFilter text="{i18n>odSalesCmnt}" key="salesComment"></IconTabFilter>
+										<IconTabFilter text="{i18n>odDelCmnt}" key="deliveryComment"></IconTabFilter>
+										<IconTabFilter text="{i18n>odDCCmnts}" key="dcComments"></IconTabFilter>
+										<IconTabFilter text="{i18n>odSpclInspection}" key="specialInspection"></IconTabFilter>
+										<IconTabFilter text="{i18n>odCallAhead}" key="callAhead"></IconTabFilter>
+									</items>
+								</IconTabBar>
+							</IconTabFilter>
+							<IconTabFilter text="{i18n>odItemTxts}" key="itemTexts">
+								<Label text="{i18n>odItemNumber}" class="sapUiTinyMarginTop customHeaderLabel"/>
+								<ComboBox value="{DeliveryModel>/itemTexts/itemNumber}"/>
+								<IconTabBar id="itemTextsContent" expandable="false" class="order-history-area"
+											stretchContentHeight="{= ${Device>/system/desktop} === true ? true : false }" select=" fnItemTxtsSelect">
+									<content>
+										<HBox alignItems="Stretch">
+											<TextArea id="itemTxtsDis" value="{DeliveryModel>/itemTexts/mtrlSalesText}" width="98%" rows="10" editable="false">
+												<layoutData>
+													<FlexItemData growFactor="1"/>
+												</layoutData>
+											</TextArea>
+											<TextArea id="itemTxtsEdit" rows="10" class="sapUiSmallMarginBegin" width="98%">
+												<layoutData>
+													<FlexItemData growFactor="1"/>
+												</layoutData>
+											</TextArea>
+										</HBox>
+										<Toolbar class="sapUiSmallMarginEnd">
+											<ToolbarSpacer/>
+											<Button text="{i18n>cancel}" class="redBorderBtn" press="fnItemTxtsCancel"/>
+											<Button text=" {i18n>clear}" class="redBorderBtn" press="fnItemTxtsClear"/>
+											<Button text="{i18n>save}" class="redBorderBtn" press="fnItemTxtsSave"/>
+										</Toolbar>
+									</content>
+									<items>
+										<IconTabFilter text="{i18n>odMtrlSlsTxt}" key="mtrlSalesText"></IconTabFilter>
+										<IconTabFilter text="{i18n>odItemNote}" key="itemNote"></IconTabFilter>
+									</items>
+								</IconTabBar>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

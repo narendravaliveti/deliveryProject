@@ -1,0 +1,20 @@
+{
+	"route": [{
+		"name": "ABC_001"
+	}, {
+		"name": "DEF_002"
+	}, {
+		"name": "GHI_003"
+	}, {
+		"name": "JKL_004"
+	}],
+	"tdmCode": [{
+		"name": "CXL"
+	}, {
+		"name": "XYZ"
+	}, {
+		"name": "STU"
+	}, {
+		"name": "KRT"
+	}]
+}
